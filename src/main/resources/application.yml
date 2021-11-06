@@ -1,0 +1,37 @@
+spring:
+  application: 
+    name: ˇbuild.final.nameˇ
+  jmx:
+    default-domain: ${spring.application.name}   
+  profiles:
+    active: ˇspring.profiles.activeˇ
+
+
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: db
+    password: db1234
+    driverClassName: org.h2.Driver
+#    url: jdbc:h2:file:/data/demo
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2console/
+
+#=========================================
+#Actuator endpoints management
+#=========================================
+management:
+  endpoints:
+    web:
+      exposure:
+        #publish Actuator endpoints
+        #include: loggers, refresh, health
+        #include: loggers
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always

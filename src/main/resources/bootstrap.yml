@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: ˇspring.profiles.activeˇ
+  cloud:
+    config:
+      enabled: false
+    
+#=========================================
+# Basic authentication for actuator
+#=========================================
+  security:
+    user:
+      name: user
+      password: user1234
+
