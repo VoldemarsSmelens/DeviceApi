@@ -1,6 +1,5 @@
 package lv.id.voldemars.deviceapi.models;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lv.id.voldemars.deviceapi.models.enums.DeviceType;
