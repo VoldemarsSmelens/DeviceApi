@@ -71,4 +71,11 @@ public class DeviceController {
         return Gson.getGson().toJson(deviceService.getTopology(macAddress));
     }
 
+    @GetMapping("/removeAllDevices")
+    @Operation(summary = "Removes all registered devices")
+    public void removeAllDevices() throws DeviceApiException {
+        log.debug("removeAllDevices");
+        deviceService.removeAllDevices();
+    }
+
 }

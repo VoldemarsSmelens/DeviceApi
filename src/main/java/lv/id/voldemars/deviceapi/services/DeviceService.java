@@ -45,4 +45,9 @@ public interface DeviceService {
      * @return Connected device topology
      */
     List<DeviceTopology> getAllTopologies();
+
+    /**
+     * Removes all registered devices from database
+     */
+    void removeAllDevices();
 }

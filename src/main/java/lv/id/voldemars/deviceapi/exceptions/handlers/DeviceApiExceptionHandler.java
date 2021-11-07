@@ -25,6 +25,9 @@ public class DeviceApiExceptionHandler extends ResponseEntityExceptionHandler {
         if(ex.getErrorMessages() != null){
             errorResponse.setResponseStatus(ResponseStatus.VALIDATION_ERROR);
             ex.getErrorMessages().forEach(message -> errorResponse.getErrorMessages().add(Pair.of(message.getCode(), message.getMessage())));
+            if(ex.getExceptionMessage() != null){
+                errorResponse.getErrorMessages().add(Pair.of(-1000L, ex.getExceptionMessage()));
+            }
         }
 
         return handleExceptionInternal(ex, errorResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);

@@ -1,5 +1,7 @@
 package lv.id.voldemars.deviceapi.services.impl;
 
+import inet.ipaddr.AddressStringException;
+import inet.ipaddr.MACAddressString;
 import lv.id.voldemars.deviceapi.exceptions.DeviceApiException;
 import lv.id.voldemars.deviceapi.models.enums.ErrorMessages;
 import lv.id.voldemars.deviceapi.persistence.mappers.DeviceMapper;
@@ -28,6 +30,7 @@ public class DeviceServiceImpl implements DeviceService {
     public void registerDevice(DeviceType deviceType, String macAddress, String upLinkMacAddress) throws DeviceApiException {
         if(deviceType == null) throw new DeviceApiException(ErrorMessages.NO_DEVICE_TYPE);
         if(macAddress == null) throw new DeviceApiException(ErrorMessages.NO_MAC_ADDRESS);
+        validateMacAddress(macAddress);
 
         checkIfDeviceNotRegisteredAlready(macAddress);
         if(upLinkMacAddress != null)checkIfUpLinkDeviceIsRegistered(upLinkMacAddress);
@@ -45,16 +48,34 @@ public class DeviceServiceImpl implements DeviceService {
 
     public Device getDevice(String macAddress) throws DeviceApiException {
         if(macAddress == null) throw new DeviceApiException(ErrorMessages.NO_MAC_ADDRESS);
+        validateMacAddress(macAddress);
+
         return DeviceUtils.getDeviceFromList(macAddress, getAllDevices());
     }
 
     public DeviceTopology getTopology(String macAddress) throws DeviceApiException {
         if(macAddress == null) throw new DeviceApiException(ErrorMessages.NO_MAC_ADDRESS);
+        validateMacAddress(macAddress);
+
         return DeviceUtils.getDeviceFromList(macAddress, getAllDeviceTopologies());
     }
 
     public List<DeviceTopology> getAllTopologies() {
         return DeviceUtils.getRoots(getAllDeviceTopologies());
+    }
+
+    @Override
+    public void removeAllDevices() {
+        deviceRepository.deleteAll();
+    }
+
+
+    private void validateMacAddress(String macAddress) throws DeviceApiException {
+        try {
+            new MACAddressString(macAddress).toAddress();
+        } catch(AddressStringException e) {
+            throw new DeviceApiException(List.of(ErrorMessages.INCORRECT_MAC_ADDRESS), e.getMessage());
+        }
     }
 
     /**

@@ -9,12 +9,18 @@ import java.util.List;
 public class DeviceApiException extends Exception{
 
     private final List<ErrorMessages> errorMessages;
+    private final String exceptionMessage;
+
+    public DeviceApiException(List<ErrorMessages> errorMessages, String exceptionMessage){
+        this.errorMessages = errorMessages;
+        this.exceptionMessage = exceptionMessage;
+    }
 
     public DeviceApiException(List<ErrorMessages> errorMessages){
-        this.errorMessages = errorMessages;
+        this(errorMessages, null);
     }
 
     public DeviceApiException(ErrorMessages errorMessage){
-        this.errorMessages = List.of(errorMessage);
+        this(List.of(errorMessage));
     }
 }
