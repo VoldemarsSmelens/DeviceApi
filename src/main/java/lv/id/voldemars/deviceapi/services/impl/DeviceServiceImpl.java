@@ -64,7 +64,6 @@ public class DeviceServiceImpl implements DeviceService {
         return DeviceUtils.getRoots(getAllDeviceTopologies());
     }
 
-    @Override
     public void removeAllDevices() {
         deviceRepository.deleteAll();
     }

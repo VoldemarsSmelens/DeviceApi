@@ -81,5 +81,9 @@ Response of getAllTopologies for default data (indented)
             "macAddress": "10:10:10:10:10:21"
         }
     ]
+    
+##Test coverage
+
+![TestCoverageImage](TestCoverage.jpg?raw=true)
 
 
