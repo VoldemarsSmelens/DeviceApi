@@ -17,7 +17,7 @@
   - Password: db1234
   
 ## Default data provided for easier testing 
-###(Can be removed by removeAllDevices method)
+### (Can be removed by removeAllDevices method)
 Response of getAllDevices for default data
 
   
@@ -45,7 +45,7 @@ Response of getAllDevices for default data
     "macAddress": "10:10:10:10:10:21",
     "upLinkDeviceAddress": null
   
-###Topology provided as JSON structure
+### Topology provided as JSON structure
 
 Response of getAllTopologies for default data (indented)
 
@@ -82,7 +82,7 @@ Response of getAllTopologies for default data (indented)
         }
     ]
     
-##Test coverage
+## Test coverage
 
 ![TestCoverageImage](TestCoverage.jpg?raw=true)
 
