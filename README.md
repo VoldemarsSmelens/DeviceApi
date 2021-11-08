@@ -2,7 +2,7 @@
 ## Startup
 ### Requirements
 - Java 11 (Added JAVA_HOME in environment variables)
-- Maven 3 (Added in path)
+- Maven 3 (Added in path + added MAVEN_HOME)
 
 ### Execution (Two options)
 - Run StartUp.bat
