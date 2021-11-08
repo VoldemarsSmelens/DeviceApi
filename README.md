@@ -15,6 +15,7 @@
 - H2 db: http://localhost:8080/h2console/login.jsp
   - User: db
   - Password: db1234
+  - url: jdbc:h2:mem:mydb
   
 ## Default data provided for easier testing 
 ### (Can be removed by removeAllDevices method)
